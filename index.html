@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Document Verification - BISE Rawalpindi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #cbd9d7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .header {
+      background-color: #17594a;
+    }
+
+    .header a,
+    .header p {
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .form-section {
+      background-color: #d3e7f7;
+      padding: 1rem 1.5rem;
+      border-radius: 0.25rem;
+    }
+
+    .btn-primary {
+      background-color: #3ca1d9;
+      color: #fff;
+      padding: 0.4rem 1rem;
+      border-radius: 0.250rem;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      background-color: #2070b7;
+    }
+
+    .btn-submit {
+      background-color: #84bb8a;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.25rem;
+      border: none;
+    }
+
+    .btn-submit:hover {
+      background-color: #699a6b;
+    }
+
+    .btn-reset {
+      background-color: #d3625b;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.25rem;
+      border: none;
+    }
+
+    .btn-reset:hover {
+      background-color: #a54436;
+    }
+
+    label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    input[readonly] {
+      background-color: #e2e8f0;
+    }
+
+    .warning-text {
+      font-size: 0.75rem;
+      color: #c52222;
+      margin-left: auto;
+    }
+
+    .app-footer {
+      font-size: 0.75rem;
+      margin-top: 3rem;
+      color: #475569;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .tooltip-icon {
+      color: #c52222;
+      font-weight: bold;
+      margin-right: 0.3rem;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .input-full-width {
+      width: 100%;
+    }
+
+    .tooltip-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 640px) {
+      .input-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #166534;
+      background-color: #dcfce7;
+      border: 1px solid #22c55e;
+      padding: 0.75rem 1rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Nav Bar -->
+  <header class="header">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-1 text-xs select-none">
+      <nav class="nav-links flex space-x-4 font-semibold">
+        <a href="#" class="hover:text-gray-200">E-Services</a>
+        <a href="#" class="hover:text-gray-200">Track Your Application</a>
+        <a href="#" class="hover:text-gray-200">Main Website</a>
+      </nav>
+      <div class="flex space-x-6 items-center text-sm">
+        <div class="flex items-center space-x-1">
+          <span>👤</span>
+          <a href="#" class="hover:text-gray-200">GIS Mapping of Institutes</a>
+        </div>
+        <div class="flex items-center space-x-1">
+          <span>📞</span>
+          <span>051-5450929</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto py-12 px-6">
+    <section class="bg-[#17594a] text-white text-center font-semibold py-3 rounded mb-8 select-none">
+      <h1 class="text-lg md:text-xl">Document Verification (for individuals)</h1>
+    </section>
+
+    <form id="verificationForm" class="form-section shadow-md" onsubmit="return submitApplication(event)">
+      <div class="flex flex-wrap gap-4 items-end">
+        <div class="flex flex-col">
+          <label for="rollNumber">RollNo</label>
+          <input autocomplete="off" class="border border-gray-300 rounded px-2 py-1" type="text" id="rollNumber"
+            name="rollNumber" placeholder="Enter Roll Number" required pattern="\d+" title="Numbers only" />
+        </div>
+
+        <div class="flex flex-col w-48">
+          <label for="classSelect">Class</label>
+          <select id="classSelect" name="class" class="border border-gray-300 rounded px-2 py-1" required>
+            <option>HSSC (12th) / 1st Annual</option>
+            <option>Matric (10th) / Annual</option>
+            <option>Other Class</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col w-32">
+          <label for="yearSelect">Year</label>
+          <select id="yearSelect" name="year" class="border border-gray-300 rounded px-2 py-1" required>
+            <option>2025</option>
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+            <option>2021</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn-primary" onclick="getRecord()">Get Record</button>
+      </div>
+
+      <div class="tooltip-container mt-3">
+        <span class="tooltip-icon">!</span>
+        <small class="warning-text">Instructions for Verification</small>
+      </div>
+
+      <hr class="my-6 border-gray-400" />
+
+      <div class="input-grid mb-4">
+        <div>
+          <label for="candidateName">Candidate's Name</label>
+          <input type="text" id="candidateName" readonly class="input-full-width rounded border border-gray-300 bg-gray-200 px-2 py-1" />
+        </div>
+
+        <div>
+          <label for="fatherName">Father's / Guardian Name</label>
+          <input type="text" id="fatherName" readonly class="input-full-width rounded border border-gray-300 bg-gray-200 px-2 py-1" />
+        </div>
+
+        <div>
+          <label for="candidateMobile">Candidate's Mobile No</label>
+          <input type="text" id="candidateMobile" class="input-full-width rounded border border-gray-300 px-2 py-1" placeholder="923xxxxxxxxx"
+            pattern="923\d{9}" title="Enter valid mobile number starting with 923" />
+        </div>
+
+        <div>
+          <label for="candidateEmail">Candidate's Email</label>
+          <input type="email" id="candidateEmail" class="input-full-width rounded border border-gray-300 px-2 py-1"
+            placeholder="example@mail.com" />
+        </div>
+
+        <div class="col-span-full">
+          <label for="candidateCNIC">Candidate's CNIC / B-Form</label>
+          <input type="text" id="candidateCNIC" class="input-full-width rounded border border-gray-300 px-2 py-1"
+            placeholder="12345-1234567-1" pattern="\d{5}-\d{7}-\d" title="CNIC Format: 12345-1234567-1" />
+        </div>
+
+        <div class="col-span-full">
+          <label for="postalAddress">Postal Address</label>
+          <input type="text" id="postalAddress" class="input-full-width rounded border border-gray-300 px-2 py-1"
+            placeholder="Enter postal address" />
+        </div>
+
+        <div class="col-span-full">
+          <label for="attestationType">Attestation / Verification Type</label>
+          <select id="attestationType" class="input-full-width rounded border border-gray-300 px-2 py-1" required>
+            <option>Verification of RESULT CARD (WITH IN COUNTRY / ABROAD / IBCC)</option>
+            <option>Verification of DMC (WITH IN COUNTRY / ABROAD / IBCC)</option>
+            <option>Other Verification Types</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex space-x-4">
+        <button type="submit" class="btn-submit">Submit Application</button>
+        <button type="reset" class="btn-reset" onclick="resetFields()">Reset Application</button>
+      </div>
+
+      <div id="successMessage" class="success-message">✔️ Congratulations! Your document has been verified and processed by BISE Rawalpindi!</div>
+    </form>
+
+    <footer class="app-footer text-left border-t border-gray-300 pt-5 select-none">
+      © 2025 Computer Section - BISE Rawalpindi
+    </footer>
+  </main>
+
+  <script>
+    const records = {
+      "19446": {
+        class: "HSSC (12th) / 1st Annual",
+        year: "2025",
+        candidateName: "Ammara Sattar",
+        fatherName: "Abdul Sattar",
+        candidateMobile: "923249981436",
+        candidateEmail: "Ammarabalooch684@gmail.com",
+        candidateCNIC: "61101-0825342-6",
+        postalAddress: "Street 5, Rawalpindi",
+        attestationType: "Verification of RESULT CARD (WITH IN COUNTRY / ABROAD / IBCC)"
+      },
+      "10002": {
+        class: "HSSC (12th) / 1st Annual",
+        year: "2025",
+        candidateName: "Sara Khan",
+        fatherName: "Shahid Khan",
+        candidateMobile: "923009876543",
+        candidateEmail: "sara.khan@example.com",
+        candidateCNIC: "54321-1234567-8",
+        postalAddress: "House 12, Islamabad",
+        attestationType: "Verification of DMC (WITH IN COUNTRY / ABROAD / IBCC)"
+      }
+    };
+
+    function getRecord() {
+      const rollNumber = document.getElementById("rollNumber").value.trim();
+      const classSelected = document.getElementById("classSelect").value;
+      const yearSelected = document.getElementById("yearSelect").value;
+      const record = records[rollNumber];
+
+      if (record && record.class === classSelected && record.year === yearSelected) {
+        document.getElementById("candidateName").value = record.candidateName;
+        document.getElementById("fatherName").value = record.fatherName;
+        document.getElementById("candidateMobile").value = record.candidateMobile;
+        document.getElementById("candidateEmail").value = record.candidateEmail;
+        document.getElementById("candidateCNIC").value = record.candidateCNIC;
+        document.getElementById("postalAddress").value = record.postalAddress;
+        document.getElementById("attestationType").value = record.attestationType;
+      } else {
+        alert("No record found for the provided Roll Number, Class, and Year.");
+        clearDetails();
+      }
+    }
+
+    function clearDetails() {
+      document.getElementById("candidateName").value = "";
+      document.getElementById("fatherName").value = "";
+      document.getElementById("candidateMobile").value = "";
+      document.getElementById("candidateEmail").value = "";
+      document.getElementById("candidateCNIC").value = "";
+      document.getElementById("postalAddress").value = "";
+      document.getElementById("attestationType").selectedIndex = 0;
+      document.getElementById("successMessage").style.display = "none";
+    }
+
+    function resetFields() {
+      clearDetails();
+    }
+
+    function submitApplication(event) {
+      event.preventDefault();
+      const rollNumber = document.getElementById("rollNumber").value.trim();
+      const candidateMobile = document.getElementById("candidateMobile").value.trim();
+      const candidateCNIC = document.getElementById("candidateCNIC").value.trim();
+
+      if (!rollNumber || !candidateMobile || !candidateCNIC) {
+        alert("Please fill in all required fields.");
+        return false;
+      }
+
+      document.getElementById("successMessage").style.display = "block";
+      return true;
+    }
+  </script>
+</body>
+</html>
