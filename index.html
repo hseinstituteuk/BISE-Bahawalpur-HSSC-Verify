@@ -15,8 +15,7 @@
       background-color: #17594a;
     }
 
-    .header a,
-    .header p {
+    .header a, .header p {
       color: #ffffff;
       font-size: 0.9rem;
     }
@@ -65,61 +64,6 @@
       background-color: #a54436;
     }
 
-    label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #1f2937;
-    }
-
-    input[readonly] {
-      background-color: #e2e8f0;
-    }
-
-    .warning-text {
-      font-size: 0.75rem;
-      color: #c52222;
-      margin-left: auto;
-    }
-
-    .app-footer {
-      font-size: 0.75rem;
-      margin-top: 3rem;
-      color: #475569;
-    }
-
-    .nav-links a:hover {
-      text-decoration: underline;
-    }
-
-    .tooltip-icon {
-      color: #c52222;
-      font-weight: bold;
-      margin-right: 0.3rem;
-    }
-
-    .input-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      align-items: flex-start;
-    }
-
-    .input-full-width {
-      width: 100%;
-    }
-
-    .tooltip-container {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    @media (max-width: 640px) {
-      .input-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .success-message {
       display: none;
       margin-top: 1rem;
@@ -134,31 +78,25 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(5px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 
 <body>
-  <!-- Top Nav Bar -->
+  <!-- Header -->
   <header class="header">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-1 text-xs select-none">
       <nav class="nav-links flex space-x-4 font-semibold">
-        <a href="#" class="hover:text-gray-200">E-Services</a>
-        <a href="#" class="hover:text-gray-200">Track Your Application</a>
-        <a href="#" class="hover:text-gray-200">Main Website</a>
+        <a href="#">E-Services</a>
+        <a href="#">Track Your Application</a>
+        <a href="#">Main Website</a>
       </nav>
       <div class="flex space-x-6 items-center text-sm">
         <div class="flex items-center space-x-1">
           <span>👤</span>
-          <a href="#" class="hover:text-gray-200">GIS Mapping of Institutes</a>
+          <a href="#">GIS Mapping of Institutes</a>
         </div>
         <div class="flex items-center space-x-1">
           <span>📞</span>
@@ -177,7 +115,7 @@
       <div class="flex flex-wrap gap-4 items-end">
         <div class="flex flex-col">
           <label for="rollNumber">RollNo</label>
-          <input autocomplete="off" class="border border-gray-300 rounded px-2 py-1" type="text" id="rollNumber"
+          <input class="border border-gray-300 rounded px-2 py-1" type="text" id="rollNumber"
             name="rollNumber" placeholder="Enter Roll Number" required pattern="\d+" title="Numbers only" />
         </div>
 
@@ -204,51 +142,44 @@
         <button type="button" class="btn-primary" onclick="getRecord()">Get Record</button>
       </div>
 
-      <div class="tooltip-container mt-3">
-        <span class="tooltip-icon">!</span>
-        <small class="warning-text">Instructions for Verification</small>
-      </div>
-
       <hr class="my-6 border-gray-400" />
 
-      <div class="input-grid mb-4">
+      <div class="grid gap-4 sm:grid-cols-2">
         <div>
           <label for="candidateName">Candidate's Name</label>
-          <input type="text" id="candidateName" readonly class="input-full-width rounded border border-gray-300 bg-gray-200 px-2 py-1" />
+          <input type="text" id="candidateName" readonly class="w-full rounded border border-gray-300 bg-gray-200 px-2 py-1" />
         </div>
 
         <div>
-          <label for="fatherName">Father's / Guardian Name</label>
-          <input type="text" id="fatherName" readonly class="input-full-width rounded border border-gray-300 bg-gray-200 px-2 py-1" />
+          <label for="fatherName">Father's Name</label>
+          <input type="text" id="fatherName" readonly class="w-full rounded border border-gray-300 bg-gray-200 px-2 py-1" />
         </div>
 
         <div>
-          <label for="candidateMobile">Candidate's Mobile No</label>
-          <input type="text" id="candidateMobile" class="input-full-width rounded border border-gray-300 px-2 py-1" placeholder="923xxxxxxxxx"
+          <label for="candidateMobile">Mobile No</label>
+          <input type="text" id="candidateMobile" class="w-full rounded border border-gray-300 px-2 py-1" placeholder="923xxxxxxxxx"
             pattern="923\d{9}" title="Enter valid mobile number starting with 923" />
         </div>
 
         <div>
-          <label for="candidateEmail">Candidate's Email</label>
-          <input type="email" id="candidateEmail" class="input-full-width rounded border border-gray-300 px-2 py-1"
-            placeholder="example@mail.com" />
+          <label for="candidateEmail">Email</label>
+          <input type="email" id="candidateEmail" class="w-full rounded border border-gray-300 px-2 py-1" placeholder="example@mail.com" />
         </div>
 
-        <div class="col-span-full">
-          <label for="candidateCNIC">Candidate's CNIC / B-Form</label>
-          <input type="text" id="candidateCNIC" class="input-full-width rounded border border-gray-300 px-2 py-1"
-            placeholder="12345-1234567-1" pattern="\d{5}-\d{7}-\d" title="CNIC Format: 12345-1234567-1" />
+        <div>
+          <label for="candidateCNIC">CNIC / B-Form</label>
+          <input type="text" id="candidateCNIC" class="w-full rounded border border-gray-300 px-2 py-1" placeholder="12345-1234567-1"
+            pattern="\d{5}-\d{7}-\d" title="CNIC Format: 12345-1234567-1" />
         </div>
 
-        <div class="col-span-full">
+        <div>
           <label for="postalAddress">Postal Address</label>
-          <input type="text" id="postalAddress" class="input-full-width rounded border border-gray-300 px-2 py-1"
-            placeholder="Enter postal address" />
+          <input type="text" id="postalAddress" class="w-full rounded border border-gray-300 px-2 py-1" placeholder="Enter postal address" />
         </div>
 
         <div class="col-span-full">
           <label for="attestationType">Attestation / Verification Type</label>
-          <select id="attestationType" class="input-full-width rounded border border-gray-300 px-2 py-1" required>
+          <select id="attestationType" class="w-full rounded border border-gray-300 px-2 py-1" required>
             <option>Verification of RESULT CARD (WITH IN COUNTRY / ABROAD / IBCC)</option>
             <option>Verification of DMC (WITH IN COUNTRY / ABROAD / IBCC)</option>
             <option>Other Verification Types</option>
@@ -256,15 +187,15 @@
         </div>
       </div>
 
-      <div class="flex space-x-4">
+      <div class="flex space-x-4 mt-6">
         <button type="submit" class="btn-submit">Submit Application</button>
-        <button type="reset" class="btn-reset" onclick="resetFields()">Reset Application</button>
+        <button type="reset" class="btn-reset" onclick="resetFields()">Reset</button>
       </div>
 
       <div id="successMessage" class="success-message">✔️ Congratulations! Your document has been verified and processed by BISE Rawalpindi!</div>
     </form>
 
-    <footer class="app-footer text-left border-t border-gray-300 pt-5 select-none">
+    <footer class="text-sm text-gray-700 mt-10 border-t pt-4">
       © 2025 Computer Section - BISE Rawalpindi
     </footer>
   </main>
@@ -281,27 +212,16 @@
         candidateCNIC: "61101-0825342-6",
         postalAddress: "Street 5, Rawalpindi",
         attestationType: "Verification of RESULT CARD (WITH IN COUNTRY / ABROAD / IBCC)"
-      },
-      "10002": {
-        class: "HSSC (12th) / 1st Annual",
-        year: "2025",
-        candidateName: "Sara Khan",
-        fatherName: "Shahid Khan",
-        candidateMobile: "923009876543",
-        candidateEmail: "sara.khan@example.com",
-        candidateCNIC: "54321-1234567-8",
-        postalAddress: "House 12, Islamabad",
-        attestationType: "Verification of DMC (WITH IN COUNTRY / ABROAD / IBCC)"
       }
     };
 
     function getRecord() {
-      const rollNumber = document.getElementById("rollNumber").value.trim();
-      const classSelected = document.getElementById("classSelect").value;
-      const yearSelected = document.getElementById("yearSelect").value;
-      const record = records[rollNumber];
+      const roll = document.getElementById("rollNumber").value.trim();
+      const cls = document.getElementById("classSelect").value;
+      const year = document.getElementById("yearSelect").value;
+      const record = records[roll];
 
-      if (record && record.class === classSelected && record.year === yearSelected) {
+      if (record && record.class === cls && record.year === year) {
         document.getElementById("candidateName").value = record.candidateName;
         document.getElementById("fatherName").value = record.fatherName;
         document.getElementById("candidateMobile").value = record.candidateMobile;
@@ -316,12 +236,9 @@
     }
 
     function clearDetails() {
-      document.getElementById("candidateName").value = "";
-      document.getElementById("fatherName").value = "";
-      document.getElementById("candidateMobile").value = "";
-      document.getElementById("candidateEmail").value = "";
-      document.getElementById("candidateCNIC").value = "";
-      document.getElementById("postalAddress").value = "";
+      ['candidateName', 'fatherName', 'candidateMobile', 'candidateEmail', 'candidateCNIC', 'postalAddress'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
       document.getElementById("attestationType").selectedIndex = 0;
       document.getElementById("successMessage").style.display = "none";
     }
@@ -330,19 +247,23 @@
       clearDetails();
     }
 
-    function submitApplication(event) {
-      event.preventDefault();
-      const rollNumber = document.getElementById("rollNumber").value.trim();
-      const candidateMobile = document.getElementById("candidateMobile").value.trim();
-      const candidateCNIC = document.getElementById("candidateCNIC").value.trim();
-
-      if (!rollNumber || !candidateMobile || !candidateCNIC) {
-        alert("Please fill in all required fields.");
-        return false;
-      }
-
+    function submitApplication(e) {
+      e.preventDefault();
       document.getElementById("successMessage").style.display = "block";
       return true;
+    }
+
+    // 📌 QR Code URL Support (Auto-fill by ?roll=)
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const rollParam = urlParams.get('roll');
+      if (rollParam && records[rollParam]) {
+        document.getElementById("rollNumber").value = rollParam;
+        document.getElementById("classSelect").value = records[rollParam].class;
+        document.getElementById("yearSelect").value = records[rollParam].year;
+        getRecord();
+        document.getElementById("successMessage").style.display = "block";
+      }
     }
   </script>
 </body>
